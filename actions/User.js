@@ -1,3 +1,4 @@
+import wait from "@/app/components/ui/utils/wait";
 import connectMongo from "@/dbConnect/connectMongo";
 import User from "@/models/User";
 import { revalidatePath } from "next/cache";
@@ -13,8 +14,11 @@ import { revalidatePath } from "next/cache";
         name,
         email
     }
+
 try{
 await connectMongo()
+
+await wait(3000)
 
 // insert into database
 await new User(userData).save()
